@@ -52,13 +52,15 @@ function addTodo( todoBody, todoStatus) {
         todoId = data[data.length - 1].id + 1;
     }
     saveData({ id: todoId, todo: todoBody, status: todoStatus })
+    console.log(chalk.bold.blue(`New task ${todoBody} successfully added`))
 }
 
 function deleteTodo(todoId) {
     let data = loadData();
     var filteredtodos = data.filter((data) => data.id !== todoId);
-    // deleteAll();
     fs.writeFileSync('./data/database.json', JSON.stringify(filteredtodos))
+    console.log(chalk.bold.blue(`Task '${todoId}' has been deleted`))
+    
 }
 
 //without yargs
@@ -110,7 +112,6 @@ yargs.command({
     },
     handler: function ({ id }) {
         deleteTodo(id)
-        // console.log(todo,status)
     }
 })
 
@@ -159,8 +160,8 @@ yargs.command({
         let toggleStatus = data.map((item)=>{
             if(item.id == id){
                 item.status = !item.status;
+                console.log(chalk.bold.blue(`Task ${item.id} completed=${item.status}`))
                 return item
-                // console.log('Task:',id,'completed?:',item.status)
             }
             return item;
         })
@@ -173,6 +174,7 @@ yargs.command({
     describe: 'delete all todos',
     handler: function () {
         deleteAll();
+        console.log(chalk.bold.blue('To-do list has been reset'))
     }
 })
 
