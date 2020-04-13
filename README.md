@@ -1,5 +1,7 @@
 # ToDoAppNodeJS
-to do app with node js
+* A command line interface(C.L.I.) todo app using Node.JS.
+* This will help you run your first "server-side" JavaScript program.
+* One of the key features of this application will be that it can save data to the local disk, so the app has persistence.
 
 ![todoapp](/todothumbnail.png)
 
