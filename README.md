@@ -1,7 +1,7 @@
 # ToDoAppNodeJS
 to do app with node js
 
-![todoapp](/todoappthumbnail.png)
+![todoapp](/todoappthumbnail2.png)
 
 * List all todo items:
  ```node app.js list```
@@ -12,6 +12,6 @@ to do app with node js
 * Toggle a certain to-do item's status:
 ``` node app.js toggle --id=id```
 * Delete a certain to do item:
-```node app.js delete --id=id ex: --id=1```
+```node app.js delete --id=id ```
 * Delete all items:
 ```node app.js delete_all```
