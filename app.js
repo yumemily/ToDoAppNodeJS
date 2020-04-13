@@ -44,7 +44,7 @@ function saveData(todo) { //write data to database with fs.writeFileSync
     fs.writeFileSync('./data/database.json', JSON.stringify(data))
 }
 
-function addTodo(todoId, todoBody, todoStatus) {
+function addTodo( todoBody, todoStatus) {
     let data = loadData();
     if (data.length === 0) {
         todoId = 1;
@@ -79,11 +79,6 @@ yargs.command({
     command: "add",
     describe: "add some todo",
     builder: {
-        id: {
-            describe: 'id of the todo',
-            demandOption: false, //is it required or not? 
-            type: 'integer',
-        },
         todo: {
             describe: 'content of the todo',
             demandOption: true, //is it required or not? 
@@ -96,8 +91,8 @@ yargs.command({
             type: 'boolean'
         }
     },
-    handler: function ({ id, todo, status }) {
-        addTodo(id, todo, status)
+    handler: function ({  todo, status }) {
+        addTodo( todo, status)
         // console.log(todo,status)
     }
 })
