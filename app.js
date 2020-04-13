@@ -33,6 +33,10 @@ function deleteAll(){
     fs.writeFileSync('./data/database.json', JSON.stringify([]))
 }
 
+function updateData(data){
+    fs.writeFileSync("data/database.json", JSON.stringify(data));
+}
+
 function saveData(todo) { //write data to database with fs.writeFileSync
     //new todo that you're passing in the function should be an object {todo: todoBody, status: toDoStatus} ex: {todo: 'eat lunch', status:'false'}
     let data = loadData(); //read existing data, expect to see a js array of todos
@@ -157,11 +161,15 @@ yargs.command({
     },
     handler: function ({ id }) {
         data = loadData();
-        data.map((item)=>{
+        let toggleStatus = data.map((item)=>{
             if(item.id == id){
-                console.log('Task:',id,'completed?:',item.status)
+                item.status = !item.status;
+                return item
+                // console.log('Task:',id,'completed?:',item.status)
             }
+            return item;
         })
+        updateData(toggleStatus)
     }
 })
 //Delete all todos
