@@ -1,7 +1,7 @@
 # ToDoAppNodeJS
 to do app with node js
 
-![todoapp](/todoappthumbnail2.png)
+![todoapp](/todothumbnail.png)
 
 * List all todo items:
  ```node app.js list```
